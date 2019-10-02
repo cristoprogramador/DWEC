@@ -11,7 +11,7 @@ function utf8readline() {
         var br = require('fs').readSync(0, b, bi, 1,null);
         if (!br) {
             readline.eof = true;
-            r += b.toString('utf-8', 0, bi);
+            r += b.toString('utf-8', 0, bi); 
             return r;
         }
         var byte = b[bi];
