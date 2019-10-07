@@ -5,7 +5,7 @@
 const print = console.log;
 const readline = utf8readline;
 function utf8readline() {
-    var r = '', b=new Buffer(10), bi=0, bl=0;
+    var r = '', b=new Buffer.alloc(10), bi=0, bl=0;
     b.fill(0);
     while (1) {
         var br = require('fs').readSync(0, b, bi, 1,null);

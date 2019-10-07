@@ -60,38 +60,39 @@ function utf8readline() {
 /**********************************************************/
 
 
+
 // AQUI EMPIEZA LA RESPUESTA DEL ALUMNO
+var texto = readline();
+print(esPalindromo(texto));
 
-var HorasTrabajadas = parseFloat(readline());
-var PrecioHora = parseFloat(readline());
-var SalarioBruto = 0.0;
-var SalarioNeto = 0.0;
 
-if (HorasTrabajadas > 35)
-{
-    SalarioBruto = 35 * PrecioHora + ((HorasTrabajadas - 35) * (PrecioHora * 1.5));
-} 
-else 
-{
-    SalarioBruto = HorasTrabajadas * PrecioHora;
-}
+function esPalindromo(texto)
+{        
+    var text = new String(texto);
+    var longitud = texto.length-1;
+    var mitad;
+    var substring1;
+    var substring2;
 
-if(SalarioBruto > 500)
-{
-    if (SalarioBruto <= 900)
+    if (longitud % 2 == 0)
     {
-        var salarioConImpuestos = SalarioBruto - 500;
-        SalarioNeto = 500 + (salarioConImpuestos - ((salarioConImpuestos/100) * 25));
+        mitad = longitud/2;
+        substring1 = text.substring(0 , mitad).toUpperCase();
+        substring2 = text.substring(mitad, longitud).toUpperCase();     
     }
     else
     {
-        var salarioConImpuestos = SalarioBruto - 900;
-        SalarioNeto = 500 + 300 + (salarioConImpuestos - ((salarioConImpuestos/100) * 45));
+        mitad = (longitud-1)/2;
+        substring1 = text.substring(0 , mitad).toUpperCase();
+        substring2 = text.substring(mitad+1, longitud).toUpperCase();
     }
-}
-else
-{
-    SalarioNeto = SalarioBruto;
-}
 
-print (SalarioNeto);
+    for(var i = 0; i < mitad; i++)
+    {
+        var letra1 = substring1.substring((mitad - 1) - i, mitad - i);
+        var letra2 = substring2.substring(0 + i, i + 1);
+        if (letra1 != letra2)
+        {return false}
+    }
+    return true;
+}

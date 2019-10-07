@@ -5,7 +5,7 @@
 const print = console.log;
 const readline = utf8readline;
 function utf8readline() {
-    var r = '', b=new Buffer(10), bi=0, bl=0;
+    var r = '', b=new Buffer.alloc(10), bi=0, bl=0;
     b.fill(0);
     while (1) {
         var br = require('fs').readSync(0, b, bi, 1,null);
@@ -62,16 +62,24 @@ function utf8readline() {
 
 
 // AQUI EMPIEZA LA RESPUESTA DEL ALUMNO
-//var num = parseInt(readline());
-var num = 6;
+var num = parseInt(readline());
 print(fibonacci(num));
 
 
 function fibonacci(num)
 {        
-    var result = 0;
-    while(resul != num)
+    var fibNum = 1;
+    if (num == 0)
     {
-      result += num
-    }   
+        return 0;
+    }  
+    else if (num == 1)
+    {
+        return fibNum;
+    }
+    else
+    { 
+      fibNum = fibonacci(num -1) + fibonacci(num -2);
+    }
+    return fibNum;
 }
