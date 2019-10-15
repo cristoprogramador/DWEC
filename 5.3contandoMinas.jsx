@@ -38,7 +38,7 @@ function utf8readline() {
             }
         }
 
-        var eoln = byte == 0x0A;
+        var eoln = byte == 0x0A; 
         if (eoln) {
             bl = 0;
             bi--;
